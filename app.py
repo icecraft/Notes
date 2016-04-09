@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*
 from NoteBook import notebook
 from SourceFind import sourcefind
+from NoteNavi import application as notenavi
 from tornado.wsgi import WSGIContainer
 from tornado.httpserver import HTTPServer
 from tornado.ioloop import IOLoop
@@ -9,8 +10,9 @@ from tornado.ioloop import IOLoop
 from werkzeug.wsgi import DispatcherMiddleware
 
 
-application = DispatcherMiddleware(notebook, {
-    '/srcfind':     sourcefind
+application = DispatcherMiddleware(notenavi, {
+    '/sourcefind':     sourcefind,
+    '/notebook':  notebook
     })
 
 def runtornado(app):
