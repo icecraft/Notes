@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="page-header">
+  <a href="{{url_for('diary.show_year', id=week.month.year.id)}}">
+     {{ week.month.year.year }} 年日记本
+  </a>
+  
+   <hr style="border-width:0" />
+    <a href="{{url_for('diary.show_month', id=week.month.id)}}">
+     {{ week.month.month }} 月日记本
+     </a>
+
+  <hr style="border-width:0" />
+  
+<ul>
+{% for diary in week.diary %}
+<li style="list-style-type:none;">
+  <font color=grey size=1px> {{ diary.weekDayName(diary.indexInWeek) }}
+  </font>
+  &nbsp; &nbsp;
+   <font color=blue>  {{ diary}} </font>
+  &nbsp; &nbsp;
+      <hr style="border-width:0" />
+      {{ diary.contents_html |safe }}
+      <a href="{{url_for('diary.edit_diary', id=diary.id)}}">
+	<font color=grey size=1px>  &nbsp; &nbsp; Edit  </font>
+      </a>
+      <hr style="border-width:0" />      
+  </li>
+{% endfor %}
+</ul>
+
+
+{% endblock %}

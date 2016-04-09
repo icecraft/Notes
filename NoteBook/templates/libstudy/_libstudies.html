@@ -1,0 +1,13 @@
+<ul class="posts">
+  {% for libstudy in libstudies %}
+  <li class="post" style="list-style-type:none;">
+      <a href="{{ url_for('libstudy.show_libstudy', id=libstudy.id) }}">
+	<h4 align="center"> {{ libstudy.libstudyname }} </h4>
+      </a>
+      <p>
+      <font color=grey> 简介: {{ libstudy.about_this }} </font>
+      </p>
+      <hr />
+  </li>
+  {% endfor %}
+</ul>

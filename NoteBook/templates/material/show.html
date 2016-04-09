@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %} {{material.title}} {% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+  <h3 align="center">{{material.title}} </h3>
+  
+     {{ material.contents_html |safe }}
+
+  <hr style="border-width:0" />
+  <p>
+    <div>
+
+	  <a href="{{ url_for('material.edit_material', id=material.id) }}" >
+            <B > <font color=grey> Edit  </font> </B> 
+	  </a>
+	
+    </div>
+  </p>
+</div>
+
+{% endblock %}

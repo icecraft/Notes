@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} {{libstudy.libstudyname}} {% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+  <h3 align="center">{{libstudy.libstudyname}} </h3>
+  
+   <p >
+     <font color=grey> 简介: {{ libstudy.about_this}} </font>
+   </p>
+
+  {% if libstudy.contents_html %}
+     {{ libstudy.contents_html |safe }}
+  {% else %}
+     {{libstudy.contents}}
+  {% endif %}
+  <hr style="border-width:0" />
+  <p>
+    <div>
+<!--          <font color=grey> 发表于 {{libstudy.timestamp.date() }} &nbsp; &nbsp; 修改于
+	  {{libstudy.lastupdate_timestamp.date() }}
+	  </font>
+           &nbsp; &nbsp; &nbsp; &nbsp;
+-->
+	  <a href="{{ url_for('libstudy.edit_libstudy', id=libstudy.id) }}" >
+            <B > <font color=grey> Edit  </font> </B> 
+	  </a>
+	
+    </div>
+  </p>
+</div>
+
+
+{% endblock %}

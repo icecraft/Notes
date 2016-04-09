@@ -1,0 +1,13 @@
+<ul class="posts">
+  {% for topic in topics %}
+  <li class="post" style="list-style-type:none;">
+      <a href="{{ url_for('topic.show_topic', id=topic.id) }}">
+	<h4 class="font-color:black" align="center"> {{ topic.topicname }} </h4>
+      </a>
+      <font color=grey>
+	简介: {{topic.about_this}}
+      </font>
+      <hr />
+  </li>
+  {% endfor %}
+</ul>

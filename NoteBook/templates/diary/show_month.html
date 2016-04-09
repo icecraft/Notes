@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="page-header">
+
+<ol>
+{% for week in month.week %}
+  <li>
+    <a href="{{url_for('diary.show_week', id=week.id)}}">
+      第{{week.week }}周
+      </a>
+  </li>
+{% endfor %}
+</ol>
+
+
+{% endblock %}

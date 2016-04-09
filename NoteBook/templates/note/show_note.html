@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %} {{note.notename}} {% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+  <h3 align="center">{{note.notename}} </h3>
+  
+   <p >
+     <font color=grey> 简介: {{ note.about_this}} </font>
+   </p>
+
+  {% if note.contents_html %}
+     {{ note.contents_html |safe }}
+  {% else %}
+     {{note.contents}}
+  {% endif %}
+  <hr style="border-width:0" />
+  <p>
+    <div>
+<!--          <font color=grey> 发表于 {{note.timestamp.date() }} &nbsp; &nbsp; 修改于
+	  {{note.lastupdate_timestamp.date() }}
+	  </font>
+           &nbsp; &nbsp; &nbsp; &nbsp;
+-->
+	  <a href="{{ url_for('note.edit_note', id=note.id) }}" >
+            <B > <font color=grey> Edit  </font> </B> 
+	  </a>
+	
+    </div>
+  </p>
+</div>
+
+<ol>
+  {% for comment in comments%}
+  <li>
+<!--    <font color=grey>
+      发表于{{ comment.timestamp.date()}}
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      更改于 {{ comment.lastupdate_timestamp.date()}}
+    </font>
+-->
+    {{ comment.contents_html |safe }}
+    <hr style="border-width:0" />
+    <p>
+      <a href="{{ url_for('comment.edit_comment', id=comment.id)}}" >
+	<font color=grey> Edit </font>
+      </a>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      <a href="{{ url_for('comment.delete_comment', id=comment.id)}}" >
+	<font color=grey> Delete </font>
+      </a>      
+    </p>
+    
+  </li>
+{% endfor %}
+</ol>
+
+<hr  style="border-width:0"  />
+
+{{ wtf.quick_form(form) }}
+
+{% endblock %}

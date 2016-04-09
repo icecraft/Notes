@@ -1,0 +1,15 @@
+<ul class="posts">
+  {% for material in materials %}
+  <li class="post" style="list-style-type:none;">
+      <a href="{{ url_for('material.show_material', id=material.id) }}">
+	<h4 align="center"> {{ material.title }} </h4>
+      </a>
+
+     <div class="post-body">
+
+       {{ material.contents_html |safe }}
+       <hr />
+     </div>
+  </li>
+  {% endfor %}
+</ul>
