@@ -9,6 +9,6 @@
    *  Diary.creat_newdiary(2016, user)
 
 5. now wait a minute!
-6  python app.py
-7  open 127.0.0.1:5050
-8  enjoy it !
+6.  python app.py
+7.  open 127.0.0.1:5050
+8.  enjoy it !
