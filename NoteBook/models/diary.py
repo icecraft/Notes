@@ -8,7 +8,6 @@ DEFAULT_DIARY_CONTENT = u"""### Miscellanise
 ### TODO
 ### 完成情况
 ### 收获
-### 说话方式，时间利用，疲劳等记录
 ### 思考
 """
 
